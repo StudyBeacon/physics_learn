@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body, #root { height: 100%; }
+body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+/* Apple-like hero and buttons */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  align-items: center;      /* vertical alignment */
+  justify-content: center;  /* equal space top & bottom (centers block) */
+}
+.title-xl {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  opacity: .9;
+}
+.btn {
+  padding: .8rem 1.4rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn-primary {
+  background: linear-gradient(135deg,#2563eb,#0ea5e9);
+  color: white;
+  box-shadow: 0 8px 22px rgba(14,165,233,.28);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(14,165,233,.38); }
+.btn-ghost {
+  background: transparent;
+  color: inherit;
+  border-color: rgba(255,255,255,.25);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.06); }
+
+.fade-in { opacity: 0; transform: translateY(10px); animation: fadeIn .7s ease forwards; }
+.fade-in-delay { animation-delay: .25s; }
+.fade-in-delay2 { animation-delay: .45s; }
+
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+/* custom cursor (optional) */
+.cursor-dot {
+  position: fixed; pointer-events: none; z-index: 2000;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: rgba(255,255,255,.8); mix-blend-mode: difference;
+  transform: translate(-50%,-50%); transition: width .15s ease, height .15s ease;
+}
+.cursor-dot.grow { width: 28px; height: 28px; }
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .hero { min-height: auto; padding: 2rem 1.25rem; }
+  .title-xl { font-size: clamp(2.2rem, 8vw, 3rem); }
+  .subtitle { font-size: 1rem; }
+  .nav-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .nav-link { padding: .4rem .6rem; border-radius: 8px; }
+  .theme-fab { right: 10px !important; top: auto !important; bottom: 18px; width: 44px !important; height: 44px !important; }
+  .theme-fab span { font-size: 22px !important; }
+  footer { padding: 2rem 1.25rem !important; }
+}
+
+@media (max-width: 640px) {
+  .grid-tight { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important; }
+}
