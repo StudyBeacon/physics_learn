@@ -17,6 +17,9 @@ const PastQuestionDetail = React.lazy(() => import('./pages/PastQuestionDetail.j
 // Units removed per request
 const AdminChapters = React.lazy(() => import('./pages/admin/Chapters.jsx'))
 const ChapterDetail = React.lazy(() => import('./pages/ChapterDetail.jsx'))
+const AskQuestion = React.lazy(() => import('./pages/AskQuestion.jsx'))
+const Contribute = React.lazy(() => import('./pages/Contribute.jsx'))
+const ContactUs = React.lazy(() => import('./pages/ContactUs.jsx'))
 
 // Navigation Component
 function Navbar({ isDark }) {
@@ -1471,13 +1474,42 @@ export default function App() {
               </div>
             } />
             <Route path="/help" element={
-              <div style={{ padding: '2rem', backgroundColor: '#f8fafc', minHeight: '70vh' }}>
+              <div style={{ padding: '2rem', backgroundColor: isDark ? '#0b1220' : '#f8fafc', minHeight: '70vh' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                  <h1 style={{ color: '#1e40af', fontSize: '2.5rem', marginBottom: '1rem' }}>Help & Support</h1>
-                  <p style={{ fontSize: '1.2rem', color: '#4b5563' }}>Get help and support for using PhysicsLearn.</p>
+                  <h1 style={{ color: isDark ? '#e5e7eb' : '#1e40af', fontSize: '2.5rem', marginBottom: '1rem' }}>Help & Support</h1>
+                  <p style={{ fontSize: '1.2rem', color: isDark ? '#94a3b8' : '#4b5563' }}>Get help and support for using PhysicsLearn.</p>
+                  <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                    <a href="/help/ask-question" style={{ 
+                      padding: '1rem 2rem', 
+                      background: '#2563eb', 
+                      color: 'white', 
+                      borderRadius: 8, 
+                      textDecoration: 'none',
+                      fontWeight: 600
+                    }}>Ask Question</a>
+                    <a href="/help/contribute" style={{ 
+                      padding: '1rem 2rem', 
+                      background: '#10b981', 
+                      color: 'white', 
+                      borderRadius: 8, 
+                      textDecoration: 'none',
+                      fontWeight: 600
+                    }}>Contribute</a>
+                    <a href="/help/contact" style={{ 
+                      padding: '1rem 2rem', 
+                      background: '#8b5cf6', 
+                      color: 'white', 
+                      borderRadius: 8, 
+                      textDecoration: 'none',
+                      fontWeight: 600
+                    }}>Contact Us</a>
+                  </div>
                 </div>
               </div>
             } />
+            <Route path="/help/ask-question" element={<AskQuestion isDark={isDark} />} />
+            <Route path="/help/contribute" element={<Contribute isDark={isDark} />} />
+            <Route path="/help/contact" element={<ContactUs isDark={isDark} />} />
           </Routes>
           </React.Suspense>
         </main>
